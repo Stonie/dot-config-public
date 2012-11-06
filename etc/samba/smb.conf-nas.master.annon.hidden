@@ -1,0 +1,38 @@
+[global]
+        workgroup = WORKGROUP
+        netbios name = [MACHINE_NAME]
+        security = share
+	domain master = no
+        local master = Yes
+        preferred master = Yes
+        os level = 35
+        guest account = nasuser
+
+[share]
+        path = /mnt/disk1/share/public
+        public = yes
+        valid users = nasuser
+        force user = nasuser
+        guest account = nasuser
+        create mask = 777
+        directory mask = 777
+        read only = No
+        guest ok = Yes
+        write list = nasuser
+        writable = yes
+        browsable = yes
+        
+[sta5h]
+        path = /mnt/disk1/share/stash
+        public = yes
+        valid users = nasuser
+        force user = nasuser
+        guest account = nasuser
+        create mask = 777
+        directory mask = 777
+        read only = No
+        guest ok = Yes
+        write list = nasuser
+        writable = yes
+        browseable = no
+

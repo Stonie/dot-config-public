@@ -1,0 +1,14 @@
+# Firewall
+
+iptables -t nat -I POSTROUTING -o 'nvram get wan_ifname' -j MASQUERADE
+
+#DHCP clients
+iptables -t nat -I POSTROUTING -s 192.168.1.96/27 -o ppp0 -j SNAT --to-source xxx.xxx.xxx.97
+
+#desktop
+iptables -t nat -I PREROUTING -d xxx.xxx.xxx.98 -j DNAT --to-destination 192.168.1.69
+iptables -t nat -I POSTROUTING -s 192.168.1.69 -j SNAT --to-source xxx.xxx.xxx.98
+
+#other
+iptables -t nat -I PREROUTING -d xxx.xxx.xxx.99 -j DNAT --to-destination 192.168.1.5
+iptables -t nat -I POSTROUTING -s 192.168.1.5 -j SNAT --to-source xxx.xxx.xxx.99

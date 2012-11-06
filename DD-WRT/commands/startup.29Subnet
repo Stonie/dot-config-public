@@ -1,0 +1,4 @@
+# Start up
+
+ifconfig 'nvram get wan_ifname':0 10.0.0.1 netmask 255.255.255.0
+ip address add xxx.xxx.xxx.xxx/29 dev ppp0 broadcast xxx.xxx.xxx.xxx
