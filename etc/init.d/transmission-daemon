@@ -11,6 +11,14 @@
 NAME=transmission-daemon
 DAEMON=/usr/bin/$NAME
 USER=nasuser
+# WARNING - Arse pain ahead!
+# when you change the user you must also chmod the working dirs
+# 	chown nasuser -R  /var/lib/transmission-daemon/info
+# 	chown nasuser -R  /etc/transmission-daemon/
+# Pro Tip: make sure you stop this daemon before editing the json config 
+# as the running daemon serializes on shut down (overwriting your changes)
+
+
 # FIXME: no pidfile support; forks, so --make-pidfile doesn't work either
 #PIDFILE=/var/run/$NAME.pid
 STOP_TIMEOUT=3
@@ -68,4 +76,5 @@ case "$1" in
 esac
 
 exit 0
+
 
